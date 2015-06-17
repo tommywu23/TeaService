@@ -18,8 +18,8 @@ router.post('/', function(req, res) {
         res.sendStatus(309);
         return;
     }else{
-        po.addService(po.builder(p),function(){
-            global.io.emit("add", p);
+        po.addService(po.builder(p),function(msg){
+            global.io.emit("add", msg);
         });
     }
 
@@ -69,14 +69,15 @@ router.patch('/',function(req, res){
             var client = http.createClient(url);
             var req = {};
             req.event = "service";
-            req.params = {"id":msg};
+            req.params = {"id": msg};
+
             client.post('notify/', req, function(err, res, body) {
                 console.log(res.statusCode, body);
             });
         });
     }
 
-    res.sendStatus(200);
+    res.send(p);
 });
 
 module.exports = router;

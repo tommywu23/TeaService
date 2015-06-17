@@ -23,7 +23,7 @@ var models = {
     },
     addService : function(item, callback){
         data.push(item);
-        if(callback) callback();
+        if(callback) callback(item);
     },
     removeService : function(id){
         data.forEach(function(item){
