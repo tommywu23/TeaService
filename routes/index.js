@@ -7,7 +7,9 @@ var router = express.Router();
 var po = require('../models/model');
 
 router.get('/', function(req, res) {
-    res.render('index', { title: "会务服务", data : po.getService()});
+    var p = po.getService();
+    console.log(p);
+    res.render('index', { title: "会务服务", data : p});
 });
 
 module.exports = router;

@@ -2,7 +2,15 @@ extends layout
 
 block content
   h1= title
-    -each item in data
-    li = item
-
   p Welcome to #{title}
+    br
+    div#service
+        for item in data
+           div
+               span= item.id
+               span= item.status
+
+               button(
+                type='button'
+                onclick='btnclick("#{item.id}")') 处理
+
