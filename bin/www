@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('EventService:server');
 var http = require('http');
 global.config = require('../package.json').config;
+global._ = require('underscore');
 
 /**
  * Get port from environment and store in Express.
