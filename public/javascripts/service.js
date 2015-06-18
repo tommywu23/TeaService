@@ -11,22 +11,20 @@ function btnclick(id){
         success: function (data) {
             $('td#td_'+id).find('button').remove();
             $('td#td_'+id).append($('<button class="btn btn-lg btn-danger" style="margin-left:100px;">').text("删除").click(function() {
-                deletes(id);
+                btndelete(id);
             }));
             $('tr#'+id).find('td[style="background-color:#B22222;color:#fff;"]').text('已接受').attr('style','background-color:#008000;color:#fff;');
         }
     });
 }
 
-function deletes(id) {
-    alert(id);
+function btndelete(id) {
     $.ajax({
         url: '/service/' + id,
         type: 'delete',
         async: false,
         dataType: 'json',
-        success: function (data) {
-            alert(111);
+        success: function (arg) {
             $('#service').find('tr#'+id).remove();
         }
     });
@@ -36,10 +34,10 @@ var socket = io();
 
 socket.on('add', function(msg){
     var p = $('#service');
-    p.prepend($('<tr>').attr('id',msg.id));
+    p.prepend($('<tr>').attr('id', msg.id));
     var a = $('tr#'+msg.id);
-    a.append($('<td>').attr('id','td_img'+msg.id));
-    var b = $('td#td_img'+msg.id);
+    a.append($('<td>').attr('id','td_img' + msg.id));
+    var b = $('td#td_img' + msg.id);
     b.append($('<img>').attr({"src":'/images/'+msg.service+'.png',"style":"width:30px;margin-right:10px;"}));
     b.append($('<span>').text(msg.service));
     a.append($('<td>').text(msg.createtime));
