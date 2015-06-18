@@ -8,7 +8,8 @@ var po = require('../models/model');
 
 router.get('/', function(req, res) {
     var p = po.getService();
-    console.log(p);
+    //console.log(p);
+    _.sortBy(p, 'status');
     res.render('index', { title: "会务服务", data : p});
 });
 

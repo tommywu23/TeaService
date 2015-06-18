@@ -3,8 +3,19 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(type="text/css",href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    script(src='/javascripts/bootstrap.js',type="text/javascript")
     script(src='/javascripts/socket.io-1.2.0.js')
     script(src='/javascripts/jquery-1.11.1.js')
     script(src='/javascripts/service.js')
   body
-    block content
+    header(style='height:100px;')
+      div.navigation-bar.bg-transparent.fixed-top(style='height:100px;')
+        div(style='postion:absolute;background:url(img/header.jpg)')
+        div.navigation-bar-content(style='min-width:960px;overflow:auto')
+          img.element.bg-hover-transparent(src='img/logo.png',style='padding:10px;height:100px;')
+          span(style='margin:20px;color:#04564a;font-size:30px;font-weight:bold;') 会务服务
+    div.container-fluid
+      div.row(style="margin-top:10px")
+        block content
+

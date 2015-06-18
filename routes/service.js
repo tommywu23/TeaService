@@ -49,7 +49,7 @@ router.delete('/:id', function(req, res) {
         po.removeService(id);
     }
 
-    res.sendStatus(200);
+    res.send(id);
 });
 
 router.patch('/',function(req, res){
