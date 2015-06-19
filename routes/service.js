@@ -72,7 +72,6 @@ router.patch('/',function(req, res){
             req.params = {"id": msg};
 
             client.post('notify/', req, function(err, res, body) {
-                console.log(res.statusCode, body);
             });
         });
     }
