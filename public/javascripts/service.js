@@ -32,14 +32,16 @@ function btndelete(id) {
 
 var socket = io();
 
+var foo = {'服务人员' : 'server', '咖啡' : 'coffee', '矿泉水': 'water', '纸巾':'tissue', '纸本':'paper', '笔':'pen', '茶水':'tea'};
+
 socket.on('add', function(msg){
     var p = $('#service');
-    p.prepend($('<tr>').attr('id', msg.id));
+    p.prepend($('<tr>').attr('id', msg.id))
     var a = $('tr#'+msg.id);
     a.append($('<td style="background-color:#B22222;color:#fff;">').text(msg.status));
     a.append($('<td>').attr({"id":"td_img" + msg.id,"style":"text-indent:25px;"}));
     var b = $('td#td_img' + msg.id);
-    b.append($('<img>').attr({"src":'/images/'+msg.service+'.png',"style":"width:30px;margin-right:10px;"}));
+    b.append($('<img>').attr({"src":'/images/'+foo[msg.service]+'.png',"style":"width:30px;margin-right:10px;"}));
     b.append($('<span>').text(msg.service));
     a.append($('<td>').text(msg.createtime));
     a.append($('<td>').text(msg.chairname));
