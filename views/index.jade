@@ -19,6 +19,7 @@ block content
                         th
             div
                 tbody#service
+                    - var foo = {'服务人员' : 'server', '咖啡' : 'coffee', '矿泉水': 'water', '纸巾':'tissue', '纸本':'paper', '笔':'pen', '茶水':'tea'};
                     for item in data
                         tr(id='#{item.id}')
                             if item.status == '请求'
@@ -27,7 +28,7 @@ block content
                                 td(style="background-color:#008000;color:#fff;") 已接受
                             td(style="text-indent:25px;")
                                 div
-                                    img(src="/images/#{item.service}.png",style="width:30px;margin-right:10px;")
+                                    img(src="/images/"+foo[item.service]+".png",style="width:30px;margin-right:10px;")
                                     span= item.service
                             td= item.createtime
                             td= item.chairname
