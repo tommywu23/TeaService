@@ -9,10 +9,9 @@ function btnclick(id){
         async: false,
         dataType: 'json',
         success: function (data) {
-            $('td#td_'+id).find('button').remove();
-            $('td#td_'+id).append($('<button class="btn btn-lg btn-danger" style="margin-left:-100px;">').text("删除").click(function() {
+            $('td#td_'+id).find('button').attr({"class":"btn btn-lg btn-danger","style":"margin-right:50px;"}).text("删除").click(function() {
                 btndelete(id);
-            }));
+            });
             $('tr#'+id).find('td[style="background-color:#B22222;color:#fff;"]').text('已接受').attr('style','background-color:#008000;color:#fff;');
         }
     });
@@ -24,8 +23,9 @@ function btndelete(id) {
         type: 'delete',
         async: false,
         dataType: 'json',
-        success: function (arg) {
-            $('#service').find('tr#'+id).remove();
+        success: function (data) {
+            window.location.reload();
+            //$('#service').find('tr#'+id).remove();
         }
     });
 }
@@ -36,7 +36,7 @@ var foo = {'服务人员' : 'server', '咖啡' : 'coffee', '矿泉水': 'water',
 
 socket.on('add', function(msg){
     var p = $('#service');
-    p.prepend($('<tr>').attr('id', msg.id))
+    p.prepend($('<tr>').attr('id', msg.id));
     var a = $('tr#'+msg.id);
     a.append($('<td style="background-color:#B22222;color:#fff;">').text(msg.status));
     a.append($('<td>').attr({"id":"td_img" + msg.id,"style":"text-indent:25px;"}));
@@ -48,7 +48,7 @@ socket.on('add', function(msg){
     a.append($('<td>').text(msg.name));
     a.append($('<td>').attr('id','td_'+msg.id));
     var c = $('td#td_'+msg.id);
-    c.append($('<button class="btn btn-lg btn-primary" style="margin-left:-100px;">').text("处理").click(function() {
+    c.append($('<button class="btn btn-lg btn-primary" style="margin-right:50px;">').text("处理").bind('click', function() {
         btnclick(msg.id);
     }));
 });

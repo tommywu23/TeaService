@@ -28,7 +28,7 @@ var models = {
     removeService : function(id){
         data.forEach(function(item){
             if(item.id == id){
-                data.splice(data.indexOf(item));
+                data.splice(data.indexOf(item),1);
             }
         });
     },
