@@ -96,8 +96,9 @@ table th, .caption{
 }
 #service td{
     font-family: "Microsoft YaHei", "微软雅黑", Arial, Helvetica, sans-serif;
+    height: 70px;
+    line-height: 70px;
     font-size: 25px;
-    padding: 15px;
     text-align: center;
 }
 
