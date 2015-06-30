@@ -36,6 +36,7 @@ var foo = {'服务人员' : 'server', '咖啡' : 'coffee', '矿泉水': 'water',
 
 socket.on('add', function(msg){
     var p = $('#service');
+    p.prepend($('<audio src="/sound/Call.wav" autoplay="autoplay">'));
     p.prepend($('<tr>').attr('id', msg.id));
     var a = $('tr#'+msg.id);
     a.append($('<td style="background-color:#B22222;color:#fff;">').text(msg.status));
