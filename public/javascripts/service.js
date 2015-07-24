@@ -42,7 +42,7 @@ socket.on('add', function(msg){
     a.append($('<td style="background-color:#B22222;color:#fff;">').text(msg.status));
     a.append($('<td>').attr({"id":"td_img" + msg.id,"style":"text-indent:25px;"}));
     var b = $('td#td_img' + msg.id);
-    b.append($('<img>').attr({"src":'/images/'+foo[msg.service]+'.png',"style":"width:30px;margin-right:10px;"}));
+    b.append($('<img>').attr({"src":'/images/'+foo[msg.service]+'.png',"style":"width:40px;margin-right:10px;"}));
     b.append($('<span>').text(msg.service));
     a.append($('<td>').text(msg.createtime));
     a.append($('<td>').text(msg.chairname));
@@ -59,7 +59,7 @@ function select(a,b) {
     var num = item.rows.length;
     for(var i=1;i<num;i++){
         item.rows[i].style.display='';
-        if(item.rows[i].cells[4].innerText==a || item.rows[i].cells[4].innerText==b){
+        if(item.rows[i].cells[0].innerText==a || item.rows[i].cells[0].innerText==b){
         }else{
             item.rows[i].style.display='none'
         }
